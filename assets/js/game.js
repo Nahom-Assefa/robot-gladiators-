@@ -1,11 +1,13 @@
-const playerName = "James";
+// Game States
+// "WIN" - Player robot has defeated all enemy-robots
+// * Fight all enemy-robots
+
+const playerName = window.prompt('What is your player/s name?');
 let playerMoney = 10;
 let playerHealth = 100;
 let playerAttack = 10;
 
-//console.log(playerName, playerHealth, playerAttack);
-
-const enemyName = "Roborto";
+const enemyNames = ["Roborto", "Amy Android", "Robo Trumble"];
 let enemyHealth = 50;
 let enemyAttack = 12;
 
@@ -15,18 +17,18 @@ const battleAnswer = window.prompt("Would you like to FIGHT or SKIP this battle?
 
 if (battleAnswer === "fight" || battleAnswer === "FIGHT") {
 enemyHealth = enemyHealth - playerAttack;
-console.log(playerName + " attacked " + enemyName + ". " + enemyName + " now has " + enemyHealth + " health remaining.");
+console.log(playerName + " attacked " + enemyNames[i] + ". " + enemyNames[i] + " now has " + enemyHealth + " health remaining.");
 
 if (enemyHealth <= 0) {
-window.alert(enemyName + " has died!");
+window.alert(enemyNames[i] + " has died!");
 } 
 
 else {
-window.alert(enemyName + " still has " + enemyHealth + " health left.");
+window.alert(enemyNames[i] + " still has " + enemyHealth + " health left.");
 }
 
 playerHealth = playerHealth - enemyAttack;
-console.log(enemyName + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining.");
+console.log(enemyNames[i] + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining.");
 
 if (playerHealth <= 0) {
 window.alert(playerName + " has died!");
@@ -57,5 +59,16 @@ window.alert("You need to choose a valid option. Try again!");
 }
 }
 
-fight();
+for (i = 0; i < enemyNames.length; i++) {
+fight(enemyNames[i]);
+}
+
+
+// Game States
+// "WIN" - Player robot has defeated all enemy-robots
+//    * Fight all enemy-robots
+//    * Defeat each enemy-robot
+// "LOSE" - Player robot's health is zero or less
+
+
 
