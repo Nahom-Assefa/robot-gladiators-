@@ -15,15 +15,31 @@ let enemyAttack = 12;
 
 const fight = function(enemyName) {
 
-while(enemyHealth > 0) {
+while(enemyHealth > 0 && playerHealth > 0) {
 const battleAnswer = window.prompt("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose.");
 
-if (battleAnswer === "fight" || battleAnswer === "FIGHT") {
+// if player picks "skip" confirm and then stop the loop
+if (battleAnswer === "skip" || battleAnswer === "SKIP") {
+// confirm player wants to skip
+const quitAnswer = window.confirm("Are you sure you'd like to quit?");
+
+// if yes (true), leave fight
+if (quitAnswer) {
+    window.alert(playerName + " has decided to skip this fight. Goodbye!");
+    // subtract money from playerMoney for skipping
+    playerMoney = playerMoney - 10;
+    console.log("playerMoney", playerMoney)
+    break;
+}
+}
+
+//if (battleAnswer === "fight" || battleAnswer === "FIGHT") {
 enemyHealth = enemyHealth - playerAttack;
-console.log(enemyName + " attacked " + enemyName + ". " + enemyName + " now has " + enemyHealth + " health remaining.");
+console.log(playerName + " attacked " + enemyName + ". " + enemyName + " now has " + enemyHealth + " health remaining.");
 
 if (enemyHealth <= 0) {
 window.alert(enemyName + " has died!");
+break;
 } 
 
 else {
@@ -35,33 +51,20 @@ console.log(enemyName + " attacked " + playerName + ". " + playerName + " now ha
 
 if (playerHealth <= 0) {
 window.alert(playerName + " has died!");
+break;
 } 
 
 else {
 window.alert(playerName + " still has " + playerHealth + " health left.");
 }
-} // End of first if block --- start of the else if block //
-
-else if (battleAnswer === "skip" || battleAnswer === "SKIP") {
-const quitAnswer = window.confirm("Would you like to quit?");
-
-if (quitAnswer) {
-window.alert(playerName + " has decided to skip this fight. Goodbye!");
-playerMoney = playerMoney - 2;
-console.log(playerMoney);
-}
-
-else {
-fight();
-}
-} 
+ // End of first if block --- start of the else if block // 
 
 // End of else if block --- start of the else block //
-else {
-window.alert("You need to choose a valid option. Try again!");
 }
-}
-}
+};
+
+
+
 
 for (let i = 0; i < enemyNames.length; i++) {
 const pickEnemyName = enemyNames[i];
