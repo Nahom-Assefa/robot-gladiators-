@@ -18,6 +18,11 @@ const fight = function(enemyName) {
 while(enemyHealth > 0 && playerHealth > 0) {
 const battleAnswer = window.prompt("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose.");
 
+/*if(battleAnswer != 'skip' || battleAnswer != "SKIP" || battleAnswer != 'fight' || battleAnswer != 'FIGHT') {
+    window.alert('This is unacceptable please try again');
+}*/
+
+
 // if player picks "skip" confirm and then stop the loop
 if (battleAnswer === "skip" || battleAnswer === "SKIP") {
 // confirm player wants to skip
@@ -25,11 +30,11 @@ const quitAnswer = window.confirm("Are you sure you'd like to quit?");
 
 // if yes (true), leave fight
 if (quitAnswer) {
-    window.alert(playerName + " has decided to skip this fight. Goodbye!");
-    // subtract money from playerMoney for skipping
-    playerMoney = playerMoney - 10;
-    console.log("playerMoney", playerMoney)
-    break;
+window.alert(playerName + " has decided to skip this fight. Goodbye!");
+// subtract money from playerMoney for skipping
+playerMoney = playerMoney - 10;
+console.log("playerMoney", playerMoney)
+break;
 }
 }
 
@@ -57,9 +62,7 @@ break;
 else {
 window.alert(playerName + " still has " + playerHealth + " health left.");
 }
- // End of first if block --- start of the else if block // 
 
-// End of else if block --- start of the else block //
 }
 };
 
@@ -67,9 +70,16 @@ window.alert(playerName + " still has " + playerHealth + " health left.");
 
 
 for (let i = 0; i < enemyNames.length; i++) {
+if (playerHealth > 0) {
+window.alert("Round " + (i + 1));
 const pickEnemyName = enemyNames[i];
 enemyHealth = 50;
 fight(pickEnemyName);
+}
+else {
+window.alert("You have lost your robot in battle! Game Over!");
+break;
+}
 }
 
 
