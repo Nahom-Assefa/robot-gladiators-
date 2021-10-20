@@ -2,6 +2,8 @@
 // "WIN" - Player robot has defeated all enemy-robots
 // * Fight all enemy-robots
 
+window.alert("Welcome to Robot Gladiators");
+
 const playerName = window.prompt('What is your player/s name?');
 let playerMoney = 10;
 let playerHealth = 100;
@@ -11,24 +13,25 @@ const enemyNames = ["Roborto", "Amy Android", "Robo Trumble"];
 let enemyHealth = 50;
 let enemyAttack = 12;
 
-const fight = function() {
-window.alert("Welcome to Robot Gladiators");
+const fight = function(enemyName) {
+
+while(enemyHealth > 0) {
 const battleAnswer = window.prompt("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose.");
 
 if (battleAnswer === "fight" || battleAnswer === "FIGHT") {
 enemyHealth = enemyHealth - playerAttack;
-console.log(playerName + " attacked " + enemyNames[i] + ". " + enemyNames[i] + " now has " + enemyHealth + " health remaining.");
+console.log(enemyName + " attacked " + enemyName + ". " + enemyName + " now has " + enemyHealth + " health remaining.");
 
 if (enemyHealth <= 0) {
-window.alert(enemyNames[i] + " has died!");
+window.alert(enemyName + " has died!");
 } 
 
 else {
-window.alert(enemyNames[i] + " still has " + enemyHealth + " health left.");
+window.alert(enemyName + " still has " + enemyHealth + " health left.");
 }
 
 playerHealth = playerHealth - enemyAttack;
-console.log(enemyNames[i] + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining.");
+console.log(enemyName + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining.");
 
 if (playerHealth <= 0) {
 window.alert(playerName + " has died!");
@@ -58,9 +61,12 @@ else {
 window.alert("You need to choose a valid option. Try again!");
 }
 }
+}
 
-for (i = 0; i < enemyNames.length; i++) {
-fight(enemyNames[i]);
+for (let i = 0; i < enemyNames.length; i++) {
+const pickEnemyName = enemyNames[i];
+enemyHealth = 50;
+fight(pickEnemyName);
 }
 
 
