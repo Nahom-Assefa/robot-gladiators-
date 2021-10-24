@@ -4,9 +4,20 @@
 
 window.alert("Welcome to Robot Gladiators");
 
+
+// Force a Player-Name to be issued //
+const getPlayerName = function() {
+    let name = "";
+    console.log(`Your robot's name is + ${name}`);
+    while (name === "" || name === null) {
+        name = prompt("What is your robot's name?");
+    }
+    return name;
+}
+
 // Player-Info Object //
 const playerInfo = {
-  name: window.prompt("What is your player's name?"),
+  name: getPlayerName(),
   money: 10,
   health: 13,
   attack: 10,
@@ -195,7 +206,7 @@ const startGame = function () {
 
   for (let i = 0; i < enemyInfo.length; i++) {
     if (playerInfo.health > 0) {
-      window.alert("Round " + (i + 1));
+      window.alert("Welcome to Robot Gladiators! Round " + (i + 1));
       //console.log(enemyInfo[i]);
       const pickedEnemyObj = enemyInfo[i];
       pickedEnemyObj.health = randomNumber(40, 60);
@@ -214,3 +225,5 @@ const startGame = function () {
 
 //Calling the Start Game Function//
 startGame();
+
+
